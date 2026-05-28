@@ -1,0 +1,97 @@
+theme: default # default || classic || dark
+organization: Anonymous University
+# twitter: '@denkivvakame'
+title: 'MAPO: Mixture of Experts with Alternating Policy Optimization for Universal Motion Tracking'
+journal: "CoRL'26"
+resources:
+  paper: # https://openreview.net/
+  # arxiv: https://arxiv.org
+  # code: https://github.com/denkiwakame/academic-project-template
+  # video: https://www.youtube.com/embed/onbnb_D1wC8?si=xJczUv716Lt5aO4l&amp;start=1150
+  # demo: https://colab.research.google.com/
+  # huggingface: https://huggingface.co/
+description: academic projectpage template that supports markdown and KaTeX
+
+image: https://denkiwakame.github.io/academic-project-template/teaser.jpg
+url: https://denkiwakame.github.io/academic-project-template
+speakerdeck: # speakerdeck slide ID
+authors:
+  - name: Anonymous Author(s)
+    affiliation: Affiliation
+    # address: Address
+    # email: email
+    # url: http://denkiwakame.github.io/
+    # position: intern
+  # - name: Jane Doe
+  #   affiliation: [1]
+  #   position: Researcher
+  #   url: https://thispersondoesnotexist.com/
+  # - name: John Smith
+  #   affiliation: [1]
+  #   position: Researcher
+  #   url: https://thispersondoesnotexist.com/
+affiliations:
+  # - Pixel Genius Labs
+  # - NeuroNauts Academy
+meta:
+  # - '*work done while she was interning at Pixel Genius Lab.'
+# bibtex: >
+#   @article{doe2024superai,
+#     author    = {Jane Doe and John Smith},
+#     title     = {Unleashing the Power of Super AI: Transforming the Future of Technology},
+#     journal   = {Journal of Superintelligent Systems},
+#     year      = {2024},
+#     volume    = {99},
+#     number    = {1},
+#     pages     = {1-42},
+#     month     = {January},
+#     keywords  = {Super AI, Machine Learning, Artificial Intelligence, Technological Innovation},
+#     doi       = {10.9999/jsis.2024.001},
+#     url       = {https://www.example.com/superai-article},
+#     note      = {This paper sets the benchmark for future AI research and applications.}
+#   }
+
+teaser: title_fig_260526_wide.jpg
+abstract: |
+  Universal humanoid motion tracking is essential for enabling humanoid robots to perform diverse tasks in human environments. To capture the wide diversity of human motions, mixture-of-experts (MoE) policies have been widely adopted, leveraging dynamic routing to enhance policy expressiveness. However, we identify that divergence between old and updated policies can be misestimated during policy-gradient updates of MoE policies, due to their dynamic routing. Because most policy-gradient algorithms regulate policy updates based on the divergence, this misestimation can lead to either overly conservative or excessively large updates, which can yield a suboptimal policy. In this paper, we propose Mixture of Experts with Alternating Policy Optimization (MAPO), which alternately optimizes the router and the experts to avoid the divergence misestimation. As a result, MAPO achieves about $1.8\times$ higher reward than an MoE policy trained with an existing policy-gradient method. MAPO also attains the highest tracking success rate among the compared methods and the lowest tracking error across most error metrics, demonstrating its superior performance.
+
+body:
+  - title: Divergence Misestimation in MoE Policies
+    text: |
+      <img src="architecture_fig_260526.png" style="width:100%;" /> 
+
+      Above Figure illustrates the differences in update mechanisms between MAPO and a standard policy gradient algorithm, PPO. Specifically, PPO measures the KL divergence of the mixed policy, while MAPO measures each component separately for clipping. When overestimation occurs, the measured divergence of the mixed policy can exceed the implicit trust region even though each component's update is admissible. In this case, MAPO still updates both components properly, whereas PPO blocks these admissible updates. When underestimation occurs, the mixed policy can stay within the trust region while individual components violate their own trust regions. MAPO properly clips each component, whereas PPO fails to clip the aggressive updates. Consequently, MAPO avoids the divergence misestimation in both cases, enabling more effective policy optimization.
+
+  - title: Motion Comparison
+    text: |
+      <video src="https://github.com/MAPO-CoRL2026/MAPO/releases/download/v1.0/mapo_video_v2_sim.mp4" controls loop muted uk-video="autoplay:inview" style="width:100%;"></video>
+
+      Representative motions where MAPO succeeds but PPO with MoE fails, under the same training setup. The selected motions require complex whole-body coordination, including sitting in mid-air, deep crouching, abrupt full-body turns, and one-footed spinning. These motions are selected from 182 cases on which MAPO consistently succeeds while PPO with MoE consistently fails across 5 independent trials, whereas the reverse occurs for only 1 motion.
+
+  - title: Real-World Deployment
+    text: |
+      <video src="https://github.com/MAPO-CoRL2026/MAPO/releases/download/v1.0/mapo_video_v2_real.mp4" controls loop muted uk-video="autoplay:inview" style="width:100%;"></video>
+
+      The MAPO-trained policy can serve as an effective teacher for distillation. The robot successfully tracks a wide range of reference motions in the real world, including challenging ones that require precise balance, such as squatting and bowing.
+
+  - title: License
+    text: |
+      This template is provided under the [Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/) license.
+      You are free to use and modify the code in your project as long as you include a link to this [GitHub repository](https://github.com/denkiwakame/academic-project-template) in your footer.
+
+projects: # relevant projects
+  # - title: Relevant Project I
+  #   description: abstract text
+  #   img: https://getuikit.com/docs/images/light.jpg
+  #   journal: "ABCD'23"
+  #   url: https://denkiwakame.github.io/academic-project-template/
+  # - title: Relevant Project II
+  #   description: abstract text
+  #   img: 001.jpg
+  #   journal: "EFGH'22"
+  #   url: https://denkiwakame.github.io/academic-project-template/
+  # - title: Relevant Project III
+  #   description: abstract text
+  #   img: 002.jpg
+  #   journal: "IJKL'22"
+  #   url: https://denkiwakame.github.io/academic-project-template/
