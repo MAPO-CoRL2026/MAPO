@@ -64,13 +64,13 @@ body:
 
   - title: Motion Comparison
     text: |
-      <video src="https://github.com/MAPO-CoRL2026/MAPO/releases/download/v1.0/mapo_video_v2_sim.mp4" controls loop muted uk-video="autoplay:inview" style="width:100%;"></video>
+      <iframe width="100%" style="aspect-ratio:16/9;" src="https://www.youtube.com/embed/_jrAorztEDA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
       Representative motions where MAPO succeeds but PPO with MoE fails, under the same training setup. The selected motions require complex whole-body coordination, including sitting in mid-air, deep crouching, abrupt full-body turns, and one-footed spinning. These motions are selected from 182 cases on which MAPO consistently succeeds while PPO with MoE consistently fails across 5 independent trials, whereas the reverse occurs for only 1 motion.
 
   - title: Real-World Deployment
     text: |
-      <video src="https://github.com/MAPO-CoRL2026/MAPO/releases/download/v1.0/mapo_video_v2_real.mp4" controls loop muted uk-video="autoplay:inview" style="width:100%;"></video>
+      <iframe width="100%" style="aspect-ratio:16/9;" src="https://www.youtube.com/embed/ervAlZvyOo0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
       The MAPO-trained policy can serve as an effective teacher for distillation. The robot successfully tracks a wide range of reference motions in the real world, including challenging ones that require precise balance, such as squatting and bowing.
 
